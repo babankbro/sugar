@@ -346,8 +346,8 @@ class GreedyDecoder:
             open_times = machine_infos[machine]["open_time"]
             closed_times = machine_infos[machine]["closed_time"]
             fixed_id = machine_infos[machine]["fixed_id"]
-            if machine != machine_infos[machine]["machine_id"]:
-                print("machine_infos[machine][]", machine, machine_infos[machine]["machine_id"])
+            #if machine != machine_infos[machine]["machine_id"]:
+                #print("machine_infos[machine][]", machine, machine_infos[machine]["machine_id"])
             for j in range(fixed_id, len(route)+1):
                 route = route_info['route'][:]
                 route.insert(j, cid)
@@ -478,7 +478,7 @@ class GreedyDecoder:
             print("open_set", len(open_set), open_set)
         
         
-        
+        notfound = 0
         for cid in open_set:
             best_route_index, best_index =  self.findbestRouteAndIndex(cid, route_infos, machie_id_type, machine_infos, isDebug)
             
@@ -488,6 +488,9 @@ class GreedyDecoder:
                 pass
             
             if best_route_index == -1:
+                notfound += 1
+                if notfound == 3:
+                    break
                 continue
             best_route_info = route_infos[best_route_index]
             route = best_route_info['route'][:]
@@ -581,7 +584,7 @@ class GreedyDecoder:
             machine_name_type = MACHINE_NAME_TYPE_LOOKUP[i]
             machines = list(np.where(Machine_Types == machine_name_type)[0])
             KI = len(machines)
-            print(i, KI)
+            #print(i, KI)
             ms = mxs[NK:NK+KI]
             order = np.argsort(ms)
             order_machines.append(machines)
@@ -735,6 +738,7 @@ class GreedyDecoder:
                                "number_of_routes":number_of_routes
                                #"name":self.dataset_lookups["Name"][list(unused_set)]
                                }
+        
         return meta_infos
 
 if __name__ == "__main__":

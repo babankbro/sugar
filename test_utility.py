@@ -27,7 +27,7 @@ def creaet_data_lookup_test(json_file_name='data.json'):
         }
     }
     
-    f = open(f"/root/sugar_route/{json_file_name}")
+    f = open(f"{json_file_name}")
     datas = json.load(f)
     
     data_set = datas["dataset"]

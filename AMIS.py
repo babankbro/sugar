@@ -489,11 +489,12 @@ def test_create_solution():
     decoder = GreedyDecoder(dataset_lookups)
     print("checck 1")
     sugar_problem = SurgarProblem(dataset_lookups)
+    sugar_problem.decoder  = decoder
     print("checck 2")
     compute_time = 30
     np.random.seed(0)
     algorithm = AMIS(sugar_problem,
-            pop_size=3, # 1 จำนวนคำตอบต่อรอบ
+            pop_size=20, # 1 จำนวนคำตอบต่อรอบ
             CR=0.3,
             max_iter = 1, # 2 จำนวนรอบ
             #max_iter  = 2,

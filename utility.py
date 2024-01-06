@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from datetime import timedelta, datetime
 import json
 import math
-
+URL_DOMAIN = "http://sugar.optzlab.com"
 
 def calculate_distance(lat1, lng1, lat2, lng2):
     """
@@ -337,7 +337,7 @@ def base_get_dataset(data_set, user_id, fleids, custom_object, machines,
     }
 
 def get_route_infos(user_id, machines, feilds):
-    query_route = f'https://green.manopna.online/api/data-get-where.php?db=data_route&where=user_id="{user_id}"'
+    query_route = f'{URL_DOMAIN}/api/data-get-where.php?db=data_route&where=user_id="{user_id}"'
     print(query_route)
     resp = req.get(query_route)
     routes = resp.json()
@@ -365,9 +365,10 @@ def get_route_infos(user_id, machines, feilds):
 def get_sub_dataset(user_id, data_set, feilds, custom_object, machines, 
                     startdate = datetime(2023, 1, 1), location_start = None, 
                     start_feild_id = None, is_start=False, priority_FIDs=[]):
-   
-    query_dm = 'https://green.manopna.online/DM%20FILE/{0}_{1}.csv'.format(data_set, user_id)
-    #print(query_dm)
+    
+    query_dm = f'{URL_DOMAIN}/DM%20FILE/{data_set}_{user_id}.csv'
+    print(query_dm)
+    
     dm_df = pd.read_csv(query_dm)
     DM = dm_df.to_numpy()[:, 1:] 
     

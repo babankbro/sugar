@@ -103,10 +103,12 @@ def cal_route():
         data_set = request.args.get('dataset')
         user_id = request.args.get('userid')
         date =   request.args.get("date")
+        url_domain_api = "https://green.manopna.online/api"
+        print(data_set, user_id)
         
-        query_feild = 'https://green.manopna.online/api/data-get-where.php?db=field&where=user_id="{0}"%20and%20data_set="{1}"'.format(user_id, data_set)
-        query_machine = 'https://green.manopna.online/api/data-get-where.php?db=machines&where=user_id="{0}"%20and%20data_set="{1}"'.format(user_id, data_set)
-        query_dm = 'https://green.manopna.online/DM%20FILE/{0}_{1}.csv'.format(data_set, user_id)
+        query_feild = f'{url_domain_api}/data-get-where.php?db=field&where=user_id="{user_id}"%20and%20data_set="{data_set}"'
+        query_machine = f'{url_domain_api}/data-get-where.php?db=machines&where=user_id="{user_id}"%20and%20data_set="{data_set}"'
+        query_dm = f'https://green.manopna.online/DM%20FILE/{0}_{1}.csv'.format(data_set, user_id)
         
         
         
@@ -126,7 +128,7 @@ def cal_route():
         isSubRequest = True
         datas = request.get_json( )
         user_id =  datas["userid"]
-        save_file = open(f"/root/sugar_route/data_test/data_{user_id}_v2.json", "w")  
+        save_file = open(f"/root/sugar_route/data_test/new_data_{user_id}_v3.json", "w")  
         print(save_file)
         json.dump(datas, save_file, indent = 4) 
         save_file.close()  
@@ -324,6 +326,8 @@ def cal_route():
     #print("DM",  dataset_lookups['DM'].shape, dataset_lookups['DM'][:, 40])
     #print(dataset_lookups.keys())
     if len(zone_results) == 1:
+        print("Zone 1")
+        print(zone_results[0]['route_data'])
         return zone_results[0]
     else:
         zone_result = zone_results[0]
@@ -341,6 +345,7 @@ def cal_route():
             zone_result['cost_data']["total_transport_cost"] += (cost_datas["total_transport_cost"])
 
             zone_result['route_data'].extend(zone_result_2['route_data'])
+        print("Zone 2")
         return zone_result
 
 

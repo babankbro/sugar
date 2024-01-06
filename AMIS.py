@@ -484,10 +484,12 @@ def test():
 
 
 def test_create_solution():
-    name = 'data_U53'
+    name = 'new_data_U33_v2'
     dataset_lookups = creaet_data_lookup_test(f'data_test/{name}.json')
     decoder = GreedyDecoder(dataset_lookups)
+    print("checck 1")
     sugar_problem = SurgarProblem(dataset_lookups)
+    print("checck 2")
     compute_time = 30
     np.random.seed(0)
     algorithm = AMIS(sugar_problem,
@@ -500,8 +502,9 @@ def test_create_solution():
             #dither="vector",
             #jitter=False
         )
-    
+    print("checck 3")
     algorithm.iterate()
+    print("checck 4")
     print("-------------ENd------------------")
     meta_infos = decoder.decode(algorithm.bestX, True)
     rinfos1, rinfos2, rinfos3, rinfos4  = meta_infos['route_sweeper'], meta_infos['route_baler'], meta_infos['route_picker'], meta_infos[ 'route_truck']
@@ -536,6 +539,5 @@ def open_closed_times():
 
 
 if __name__ == "__main__":
-    pass
     test_create_solution()
   

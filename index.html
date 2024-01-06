@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+<script>
+    function SentName(){
+        $.post('http://194.163.45.74:5010/get_distance', 
+                {
+                    dataset:1,
+                    userid : "U3",
+                    LAT: JSON.stringify([16.436590326601667, 16.436590326601667, 16.428069700492035]),
+                    LNG: JSON.stringify([103.50229635625247, 103.51426973737784, 103.52250948352861]),
+                }, 
+                function(data){
+                    alert("Finsih => " + data['distance_matrix']+ " "+data['duration_matrix'])
+
+                    data['distance_matrix'] = data['distance_matrix'].match(/\d+(?:\.\d+)?/g).map(Number)
+                    data['duration_matrix'] = data['duration_matrix'].match(/\d+(?:\.\d+)?/g).map(Number)
+                    console.log(data)
+                }
+        )
+
+    }
+</script>
+
+<body>
+    <h1>My Distance App</h1>
+    <button  id="send" onclick="SentName()">GET DISTANCE</button>
+</body>
+</html>

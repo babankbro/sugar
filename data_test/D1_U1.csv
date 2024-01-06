@@ -1,0 +1,16 @@
+"<!DOCTYPE html><html lang=""en""><head>"
+"  <meta charset=""utf-8"">"
+  <title>โครงการวิจัยและพัฒนาระบบการรวบรวมและขนส่งใบอ้อยเพื่อส่งเสริมการผลิตพลังงานจากชีวมวล และลดการปล่อย PM 2.5 ในภาคการเกษตร </title>
+"  <base href=""/"">"
+"  <link rel=""icon"" type=""image/x-icon"" href=""favicon.ico"">"
+"  <link rel=""preconnect"" href=""https://fonts.gstatic.com"">"
+"  <style type=""text/css"">@font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/materialicons/v139/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');}.material-icons{font-family:'Material Icons';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased;}</style>"
+"  <!-- <script src=""https://maps.googleapis.com/maps/api/js?key=AIzaSyAYukwjqmvbKux1xhOR9fNRl9ECpq4bB3g""></script> -->"
+"  <script src=""https://maps.googleapis.com/maps/api/js?key=AIzaSyAYukwjqmvbKux1xhOR9fNRl9ECpq4bB3g&amp;libraries=visualization""></script>"
+"  <link rel=""manifest"" href=""manifest.webmanifest"">"
+"  <meta name=""theme-color"" content=""#1976d2"">"
+"<body class=""mat-typography"">"
+  <app-root></app-root>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+"<script src=""runtime.42adb99f21582471.js"" type=""module""></script><script src=""polyfills.928844b92d59d33c.js"" type=""module""></script><script src=""main.1328c0dc46192c56.js"" type=""module""></script>"
+</body></html>

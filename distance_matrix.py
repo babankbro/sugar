@@ -30,6 +30,7 @@ def get_distance_duration_matrix(lats, lngs):
         for j in range(len(lngs)):
             latj = lats[j]
             lngj = lngs[j]
+            print(i, j)
             if i == j:
                 distances.append(0)
                 durations.append(0)
@@ -40,6 +41,7 @@ def get_distance_duration_matrix(lats, lngs):
         
         DM.append(distances)
         DT.append(durations)
+        
     return DM, DT
 
 

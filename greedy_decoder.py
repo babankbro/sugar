@@ -489,7 +489,7 @@ class GreedyDecoder:
             
             if best_route_index == -1:
                 notfound += 1
-                if notfound == 3:
+                if notfound == 1:
                     break
                 continue
             best_route_info = route_infos[best_route_index]

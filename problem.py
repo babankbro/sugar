@@ -286,7 +286,7 @@ class SurgarProblem(ElementwiseProblem):
         N = dataset_lookups["Number_Feilds"]
         NF = dataset_lookups["Number_Feilds_NF"]
         M = len(dataset_lookups["Machine_ID"])
-        self.N = 4*(N+NF)+4+M
+        self.N = 4*(N+NF)+4+M + 1
         super().__init__(n_var=self.N, n_obj=1, n_constr=0, xl=0, xu=1)
         self.Prices = self.dataset_lookups["Price"]
         self.Areas = self.dataset_lookups["Area"]

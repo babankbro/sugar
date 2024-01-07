@@ -578,12 +578,16 @@ class GreedyDecoder:
         MACHINE_NAME_TYPE_LOOKUP = self.dataset_lookups["MACHINE_NAME_TYPE_LOOKUP"]
         Machine_Types = self.dataset_lookups["Machine_Type"]
         order_machines = []
+        NM = x[-1]
         
         NK = 0
         for i in range(4):
             machine_name_type = MACHINE_NAME_TYPE_LOOKUP[i]
             machines = list(np.where(Machine_Types == machine_name_type)[0])
             KI = len(machines)
+            if KI > 1:
+                TKI = max(1, int(KI * NM) + 1)
+                KI = min(KI, TKI)
             #print(i, KI)
             ms = mxs[NK:NK+KI]
             order = np.argsort(ms)
@@ -591,12 +595,14 @@ class GreedyDecoder:
             NK += KI
         
         update_open_closed_time(self.dataset_lookups, "Sweeper", None, isDebug)
-        route_infos = self.decode_vehicle_type(0, order_machines[0], x[:N+NF], next_open_sweep[:], isDebug)
+        route_infos = self.decode_vehicle_type(0, order_machines[0], x[:N+NF], 
+                                               next_open_sweep[:], isDebug)
         self.update_openset(next_open_sweep, next_open_bale, route_infos, next_closed_sweep)
         meta_infos["route_sweeper"] = route_infos
         
         update_open_closed_time(self.dataset_lookups, "Baler", route_infos, isDebug)
-        route_infos = self.decode_vehicle_type(1, order_machines[1], x[(N+NF):(N+NF)*2], next_open_bale[:], isDebug)
+        route_infos = self.decode_vehicle_type(1, order_machines[1], x[(N+NF):(N+NF)*2], 
+                                               next_open_bale[:], isDebug)
         self.update_openset(next_open_bale, next_open_pick, route_infos, next_closed_bale)
         if isDebug:
             print("next_open_pick", next_open_pick, route_infos[0]['route'], next_closed_bale)
@@ -609,7 +615,8 @@ class GreedyDecoder:
                 #print(route)
         
         update_open_closed_time(self.dataset_lookups,"Picker", route_infos, isDebug)
-        route_infos = self.decode_vehicle_type(2, order_machines[2], x[(N+NF)*2:(N+NF)*3], next_open_pick[:], isDebug)
+        route_infos = self.decode_vehicle_type(2, order_machines[2], x[(N+NF)*2:(N+NF)*3], 
+                                               next_open_pick[:], isDebug)
         meta_infos["route_picker"] = route_infos
         
         machine_name_type = "Truck"

@@ -484,7 +484,7 @@ def test():
 
 
 def test_create_solution():
-    name = 'new_data_U33_v2'
+    name = 'new_data_U33_v3'
     dataset_lookups = creaet_data_lookup_test(f'data_test/{name}.json')
     decoder = GreedyDecoder(dataset_lookups)
     print("checck 1")
@@ -524,9 +524,9 @@ def test_create_solution():
             pass
     
     df = pd.DataFrame(json_datas)
-    df.to_csv(f"/root/sugar_route/{name}.csv", index=False)
+    df.to_csv(f"{name}.csv", index=False)
     df = pd.DataFrame(cost_datas['machine_costs'])
-    df.to_csv(f"/root/sugar_route/cost_table_{name}.csv", index=False)
+    df.to_csv(f"cost_table_{name}.csv", index=False)
 
 def open_closed_times():
     name = 'data_single'

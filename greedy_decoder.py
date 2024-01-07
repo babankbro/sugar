@@ -601,7 +601,7 @@ class GreedyDecoder:
         meta_infos["route_sweeper"] = route_infos
         
         update_open_closed_time(self.dataset_lookups, "Baler", route_infos, isDebug)
-        route_infos = self.decode_vehicle_type(1, order_machines[1], x[(N+NF):(N+NF)*2], 
+        route_infos = self.decode_vehicle_type(1, order_machines[1], x[10:N+NF+10], 
                                                next_open_bale[:], isDebug)
         self.update_openset(next_open_bale, next_open_pick, route_infos, next_closed_bale)
         if isDebug:
@@ -615,7 +615,7 @@ class GreedyDecoder:
                 #print(route)
         
         update_open_closed_time(self.dataset_lookups,"Picker", route_infos, isDebug)
-        route_infos = self.decode_vehicle_type(2, order_machines[2], x[(N+NF)*2:(N+NF)*3], 
+        route_infos = self.decode_vehicle_type(2, order_machines[2], x[20:N+NF+20], 
                                                next_open_pick[:], isDebug)
         meta_infos["route_picker"] = route_infos
         

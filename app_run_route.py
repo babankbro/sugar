@@ -263,7 +263,7 @@ def cal_route():
         np.random.seed(0)
 
         algorithm = AMIS(sugar_problem,
-            pop_size=10, # 1 จำนวนคำตอบต่อรอบ
+            pop_size=5, # 1 จำนวนคำตอบต่อรอบ
             CR=0.3,
             max_iter = 1*(len(fzone_datas)+len(mzone_datas)), # 2 จำนวนรอบ
             #max_iter  = 2,

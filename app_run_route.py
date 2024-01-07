@@ -259,10 +259,11 @@ def cal_route():
         
     
         sugar_problem = SurgarProblem(dataset_lookups)
+        sugar_problem.decoder = route_decoder
         np.random.seed(0)
 
         algorithm = AMIS(sugar_problem,
-            pop_size=10, # 1 จำนวนคำตอบต่อรอบ
+            pop_size=20, # 1 จำนวนคำตอบต่อรอบ
             CR=0.3,
             max_iter = 1*(len(fzone_datas)+len(mzone_datas)), # 2 จำนวนรอบ
             #max_iter  = 2,
@@ -327,7 +328,7 @@ def cal_route():
     #print(dataset_lookups.keys())
     if len(zone_results) == 1:
         print("Zone 1")
-        print(zone_results[0]['route_data'])
+        print(zone_results[0]['cost_data'])
         return zone_results[0]
     else:
         zone_result = zone_results[0]
